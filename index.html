@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cockpit Cosmique</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section id="commandes">
+    <button id="toggle-vitesse">⏯️ Vitesse / Distance</button>
+    <button id="reset-vmax">🔄 Réinitialiser Vitesse Max</button>
+  </section>
+
+  <canvas id="medaillon-minecraft" width="320" height="320"></canvas>
+
+  <section id="grandeurs">
+    <div id="vitesse"></div>
+    <div id="distance"></div>
+    <div id="coordonnees"></div>
+    <div id="altitude"></div>
+    <div id="temps"></div>
+    <div id="solaire"></div>
+    <div id="lunaire"></div>
+    <div id="frequence"></div>
+    <div id="niveau"></div>
+    <div id="orientation"></div>
+    <div id="lumiere"></div>
+    <div id="son"></div>
+    <div id="gps"></div>
+    <div id="mode-souterrain"></div>
+  </section>
+
+  <script type="module">
+    import { setupCommandes } from './js/cockpit.js';
+    import { afficherGrandeursCosmiques } from './js/grandeurs.js';
+    import { dessinerMedaillonMinecraft } from './js/medaillon.js';
+
+    setupCommandes();
+    afficherGrandeursCosmiques();
+    dessinerMedaillonMinecraft();
+    setInterval(dessinerMedaillonMinecraft, 1000);
+  </script>
+</body>
+</html>
