@@ -69,5 +69,4 @@ export function setupCommandes() {
   document.getElementById("reset-vmax").onclick = () => {
     document.getElementById("vitesse").innerHTML = `<h2>Vitesse</h2><p>Réinitialisée</p>`;
   };
-        }
-                              
+}
