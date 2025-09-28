@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <title>Cockpit Cosmique</title>
   <link rel="stylesheet" href="style.css">
-</head>
   <link rel="manifest" href="manifest.json">
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
-  }
-</script>
-  
+  <link rel="icon" href="assets/medaillon.png">
+  <meta name="theme-color" content="#6a00ff">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
+</head>
 <body>
-  <div id="cockpit">
+  <header>
+    <img src="assets/medaillon.png" alt="Médaillon cosmique" id="medaillon">
+    <h1>Cockpit Cosmique</h1>
+  </header>
+
+  <main id="cockpit">
     <section id="distance"><h2>Distance</h2></section>
     <section id="coordonnees"><h2>Coordonnées Minecraft</h2></section>
     <section id="altitude"><h2>Altitude</h2></section>
@@ -23,9 +29,8 @@
     <section id="frequence"><h2>Fréquence</h2></section>
     <section id="niveau"><h2>Niveau à bulle</h2></section>
     <section id="vitesse"><h2>Vitesse</h2></section>
-  </div>
+  </main>
 
-  <!-- Boutons -->
   <div id="boutons">
     <button onclick="toggleVitesse()">⏻ Marche/Arrêt Vitesse</button>
     <button onclick="toggleDistance()">⏻ Marche/Arrêt Distance</button>
@@ -41,7 +46,5 @@
 
   <script type="module" src="js/grandeursCosmiques.js"></script>
   <script src="js/rituels.js"></script>
-  
-</body> 
+</body>
 </html>
-    
