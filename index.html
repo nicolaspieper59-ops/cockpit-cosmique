@@ -58,6 +58,32 @@
       <div>Vers lon : <span id="longitude">--</span></div>
       <div>Cap vers destination : <span id="cap-destination">--</span>°</div>
     </section>
+    <section id="controle">
+  <h2>🎛️ Contrôles</h2>
+  <button onclick="toggleMarche()">Marche / Arrêt</button>
+  <button onclick="reinitialiserVitesseMax()">Réinitialiser vitesse max</button>
+</section>
+
+<section id="conversion">
+  <h2>🧮 Conversions</h2>
+  <div>Vitesse : <span id="vitesse-mm">0</span> mm/s</div>
+  <div>Distance : <span id="distance-km">0</span> km</div>
+  <div>Distance : <span id="distance-sec-lumiere">0</span> s lumière</div>
+  <div>Distance : <span id="distance-annee-lumiere">0</span> a.l.</div>
+  <div>Coordonnées Minecraft : <span id="coords-minecraft">X:0 Y:0 Z:0</span></div>
+</section>
+
+<section id="compteurs">
+  <h2>🌀 Compteurs</h2>
+  <div>Fréquence cosmique : <span id="compteur-hz">--</span> Hz</div>
+  <div>Champ magnétique : <span id="champ-magnetique">--</span> µT</div>
+</section>
+
+<section id="medaillon">
+  <h2>🔮 Médaillon cosmique</h2>
+  <canvas id="medaillon-celeste" width="300" height="300"></canvas>
+  <div>Zénith : bord du disque | 0° : centre | Horizon : demi-cercle</div>
+</section>  
 
     <section id="capteurs">
       <h2>📐 Capteurs</h2>
