@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Cockpit Cosmique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/medaillon.png">
-  <meta name="theme-color" content="#6a00ff">
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js");
-    }
-  </script>
+  <style>
+    body { background: #000; color: #ccc; font-family: sans-serif; text-align: center; }
+    .module { margin: 1em auto; padding: 1em; border: 1px solid #333; border-radius: 10px; max-width: 600px; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5em; margin: 2em auto; max-width: 600px; }
+    .calendar-cell { background: #111; color: #ccc; padding: 1em; border-radius: 10px; cursor: pointer; transition: transform 0.3s; }
+    .calendar-cell:hover { transform: scale(1.1); background: radial-gradient(circle, cyan, #000); }
+    .étoile-collective { background: #111; color: cyan; padding: 1em; border-radius: 10px; cursor: pointer; margin: 0.5em; display: inline-block; }
+    canvas { border: 2px solid #333; background: radial-gradient(circle at center, #000011, #000000); margin: 2em auto; display: block; }
+    button { background: #222; color: #fff; padding: 0.5em 1em; border: none; border-radius: 5px; cursor: pointer; margin: 1em; }
+    button:hover { background: #444; }
+  </style>
 </head>
 <body>
-  <!-- Médaillon central -->
-  <header>
-    <img src="assets/medaillon.png" alt="Médaillon cosmique" id="medaillon">
-    <h1>Cockpit Cosmique</h1>
-  </header>
 
-  <!-- Sections des grandeurs -->
-  <main id="cockpit">
-    <section id="distance"><h2>Distance</h2></section>
-    <section id="coordonnees"><h2>Coordonnées Minecraft</h2></section>
-    <section id="altitude"><h2>Altitude</h2></section>
-    <section id="temps"><h2>Horloge</h2></section>
-    <section id="solaire"><h2>Soleil</h2><img src="assets/soleil.svg" class="icone"></section>
-    <section id="lunaire"><h2>Lune</h2><img src="assets/lune.svg" class="icone"></section>
-    <section id="frequence"><h2>Fréquence</h2></section>
-    <section id="niveau"><h2>Niveau à bulle</h2></section>
-    <section id="vitesse"><h2>Vitesse</h2></section>
-  </main>
+  <h1>🌌 Cockpit Cosmique</h1>
 
-  <!-- Boutons interactifs -->
-  <div id="boutons">
-    <button onclick="toggleVitesse()">⏻ Marche/Arrêt Vitesse</button>
-    <button onclick="toggleDistance()">⏻ Marche/Arrêt Distance</button>
-    <button onclick="resetVitesseMax()">↻ Réinitialiser Vitesse Max</button>
-    <button onclick="rejouerRituels()">⏪ Rejouer Rituels</button>
+  <div id="halo" class="module">✨ Halo cosmique</div>
+  <div id="invocation" class="module">📜 Invocation</div>
+
+  <div id="calendrier" class="module">
+    <h2>📅 Calendrier Cosmique</h2>
+    <div class="calendar-grid" id="calendar-grid"></div>
   </div>
 
-  <!-- Halos -->
-  <div id="halos">
-    <div id="halo_souffle" class="halo souffle"></div>
-    <div id="halo_clarte" class="halo clarte"></div>
-    <div id="halo_rituel" class="halo rituel"></div>
+  <div id="constellation" class="module">
+    <h2>🌠 Constellation Collective</h2>
   </div>
 
-  <!-- Console de debug -->
-  <section id="console">
-    <h2>Console</h2>
-    <div id="console-log">0 déclenchements rituels</div>
-  </section>
+  <canvas id="spectre" width="600" height="200"></canvas>
 
-  <!-- Scripts -->
-  <script type="module" src="js/grandeursCosmiques.js"></script>
-  <script src="js/rituels.js"></script>
+  <div id="journal" class="module">
+    <h2>📘 Journal Cosmique</h2>
+    <button onclick="exporterJournal()">📤 Exporter le journal</button>
+  </div>
+
+  <button onclick="invoquerEnDirect({
+    nom: 'Conjonction Vénus-Jupiter',
+    date: '2025-11-19T22:00:00Z',
+    type: 'planétaire',
+    note: 'Deux astres s’embrassent dans le ciel, nos voix s’accordent.',
+    lumière: 120,
+    son: 42,
+    vitesse: 0.0,
+    gps: { latitude: 43.2965, longitude: 5.3698 }
+  })">✨ Invoquer en direct</button>
+
+  <script src="rituel-collectif.js"></script>
+  <script src="resonance.js"></script>
+  <script src="spectre.js"></script>
+  <script src="calendrier-cosmique.js"></script>
+  <script src="journal-cosmique.js"></script>
 </body>
 </html>
