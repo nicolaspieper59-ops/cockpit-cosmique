@@ -47,7 +47,6 @@ export function activerVitesseReelle() {
   });
 }
 
-// Calcul de distance entre deux points GPS (formule de Haversine)
 function calculerDistance(lat1, lon1, lat2, lon2) {
   const R = 6371000;
   const rad = Math.PI / 180;
