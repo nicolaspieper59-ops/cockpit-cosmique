@@ -2,20 +2,49 @@ body {
   background: radial-gradient(ellipse at center, #0b0c1a 0%, #000000 100%);
   color: white;
   font-family: 'Segoe UI', sans-serif;
-  padding: 2em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  padding: 1em;
+}
+
+#medaillon {
+  width: 80px;
+  display: block;
+  margin: 0 auto;
 }
 
 section {
-  margin: 1em 0;
+  margin: 1em;
   padding: 1em;
   border-radius: 12px;
   background: rgba(255,255,255,0.05);
   box-shadow: 0 0 12px rgba(255,255,255,0.2);
 }
 
-.icone {
-  width: 32px;
-  height: 32px;
+#boutons {
+  margin: 2em 0;
+}
+
+#boutons button {
+  margin: 0.5em;
+  padding: 0.8em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #6a00ff, #00d4ff);
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#boutons button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 .halo {
@@ -34,6 +63,11 @@ section {
   0% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.4); opacity: 1; }
   100% { transform: scale(1); opacity: 0.6; }
+}
+
+.active {
+  opacity: 1;
+  animation: pulse 2s infinite;
 }
 
 .rituel.active, .souffle.active, .clarte.active {
