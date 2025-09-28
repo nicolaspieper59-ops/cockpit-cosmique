@@ -46,5 +46,15 @@
 
   <script type="module" src="js/grandeursCosmiques.js"></script>
   <script src="js/rituels.js"></script>
+  <script type="module">
+  import { afficherGrandeursCosmiques } from "./js/grandeursCosmiques.js";
+
+  // Premier affichage
+  afficherGrandeursCosmiques();
+
+  // Mise à jour toutes les 5 secondes
+  setInterval(afficherGrandeursCosmiques, 5000);
+  </script>
+  
 </body>
 </html>
