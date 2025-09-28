@@ -1,0 +1,20 @@
+{
+  "seuils": {
+    "frequence": 10.0,
+    "vitesse": 20.0,
+    "inclinaison": 30.0,
+    "champMagnetique": 50.0
+  },
+  "soleil": {
+    "lever": "07:27",
+    "coucher": "19:34",
+    "culmination": "13:30",
+    "deg": 45.0
+  },
+  "lune": {
+    "lever": "23:30",
+    "coucher": "13:00",
+    "culmination": "06:00",
+    "deg": 60.0
+  }
+}
