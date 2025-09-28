@@ -7,14 +7,14 @@
   "theme_color": "#6a00ff",
   "icons": [
     {
-      "src": "assets/soleil.svg",
+      "src": "assets/medaillon.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "assets/lune.svg",
+      "src": "assets/medaillon.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png"
     }
   ]
 }
