@@ -15,7 +15,24 @@ const ASSETS = [
   "./assets/halo_rituel.svg",
   "./assets/souffle.mp3",
   "./assets/clarte.mp3",
+  "./assets/rituel.mp3",
+  "./index.html",
+  "./style.css",
+  "./js/grandeursCosmiques.js",
+  "./js/modulesCapteurs.js",
+  "./js/rituels.js",
+  "./data/config.json",
+  "./data/journal.json",
+  "./assets/soleil.svg",
+  "./assets/lune.svg",
+  "./assets/halo_souffle.svg",
+  "./assets/halo_clarte.svg",
+  "./assets/halo_rituel.svg",
+  "./assets/medaillon.png",
+  "./assets/souffle.mp3",
+  "./assets/clarte.mp3",
   "./assets/rituel.mp3"
+  
 ];
 
 // Installation
