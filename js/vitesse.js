@@ -28,10 +28,10 @@ export function activerVitesseReelle() {
 
       document.getElementById("vitesse").innerHTML = `
         <h2>Vitesse réelle</h2>
-        <p>Instantanée : ${vitesseKmh.toFixed(2)} km/h</p>
-        <p>Max : ${vmax.toFixed(2)} km/h</p>
+        <p>Instantanée : ${vitesseKmh.toFixed(4)} km/h</p>
+        <p>Max : ${vmax.toFixed(4)} km/h</p>
         <p>m/s : ${vitesseMs.toFixed(4)}</p>
-        <p>mm/s : ${vitesseMm.toFixed(2)}</p>
+        <p>mm/s : ${vitesseMm.toFixed(4)}</p>
         <p>% lumière : ${pourcentLumiere} %</p>
         <p>% son : ${pourcentSon} %</p>
       `;
