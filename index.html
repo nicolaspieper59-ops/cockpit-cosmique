@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cockpit Cosmique</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grandeurs cosmiques</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/soleil.svg">
+  <meta http-equiv="refresh" content="30">
 </head>
 <body>
-  <noscript>
-    <div style="padding:12px;background:#222;color:#fff;font-family:monospace;">
-      Ce cockpit nécessite JavaScript pour fonctionner.
-    </div>
-  </noscript>
+  <div id="cockpit">
+    <section id="distance"><h2>Distance</h2></section>
+    <section id="coordonnees"><h2>Coordonnées Minecraft (Terre plate)</h2></section>
+    <section id="altitude"><h2>Altitude</h2></section>
+    <section id="temps"><h2>Horloge</h2></section>
+    <section id="solaire"><h2>Soleil</h2><img src="assets/soleil.svg" class="icone"></section>
+    <section id="lunaire"><h2>Lune</h2><img src="assets/lune.svg" class="icone"></section>
+    <section id="frequence"><h2>Fréquence</h2></section>
+    <section id="niveau"><h2>Niveau à bulle</h2></section>
+    <section id="vitesse"><h2>Vitesse</h2></section>
+  </div>
 
-  <script type="module">
-    import { initCockpitAllInOne } from './js/cockpit_all_in_one.js';
-    initCockpitAllInOne();
-  </script>
+  <div id="halos">
+    <div id="halo_souffle" class="halo souffle"></div>
+    <div id="halo_clarte" class="halo clarte"></div>
+    <div id="halo_rituel" class="halo rituel"></div>
+  </div>
+
+  <script type="module" src="grandeursCosmiques.js"></script>
 </body>
 </html>
