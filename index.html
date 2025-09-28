@@ -2,16 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grandeurs cosmiques</title>
+  <title>Cockpit Cosmique</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/soleil.svg">
-  <meta http-equiv="refresh" content="30">
 </head>
 <body>
   <div id="cockpit">
     <section id="distance"><h2>Distance</h2></section>
-    <section id="coordonnees"><h2>Coordonnées Minecraft (Terre plate)</h2></section>
+    <section id="coordonnees"><h2>Coordonnées Minecraft</h2></section>
     <section id="altitude"><h2>Altitude</h2></section>
     <section id="temps"><h2>Horloge</h2></section>
     <section id="solaire"><h2>Soleil</h2><img src="assets/soleil.svg" class="icone"></section>
@@ -21,6 +18,14 @@
     <section id="vitesse"><h2>Vitesse</h2></section>
   </div>
 
+  <!-- Boutons -->
+  <div id="boutons">
+    <button onclick="toggleVitesse()">⏻ Marche/Arrêt Vitesse</button>
+    <button onclick="toggleDistance()">⏻ Marche/Arrêt Distance</button>
+    <button onclick="resetVitesseMax()">↻ Réinitialiser Vitesse Max</button>
+    <button onclick="rejouerRituels()">⏪ Rejouer Rituels</button>
+  </div>
+
   <div id="halos">
     <div id="halo_souffle" class="halo souffle"></div>
     <div id="halo_clarte" class="halo clarte"></div>
@@ -28,5 +33,7 @@
   </div>
 
   <script type="module" src="grandeursCosmiques.js"></script>
+  <script src="rituels.js"></script>
 </body>
-</html>
+                                                              </html>
+    
