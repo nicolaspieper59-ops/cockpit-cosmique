@@ -5,6 +5,13 @@
   <title>Cockpit Cosmique</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <link rel="manifest" href="manifest.json">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+  
 <body>
   <div id="cockpit">
     <section id="distance"><h2>Distance</h2></section>
@@ -34,6 +41,6 @@
 
   <script type="module" src="grandeursCosmiques.js"></script>
   <script src="rituels.js"></script>
-</body>
-                                                              </html>
+</body> 
+</html>
     
