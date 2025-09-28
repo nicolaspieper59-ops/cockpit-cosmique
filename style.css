@@ -70,6 +70,15 @@ section {
   animation: pulse 2s infinite;
 }
 
-.rituel.active, .souffle.active, .clarte.active {
-  animation: pulse 2s infinite;
+#console {
+  margin: 2em;
+  padding: 1em;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  text-align: left;
+  font-family: monospace;
+  font-size: 0.9em;
+  max-height: 200px;
+  overflow-y: auto;
 }
+                         
