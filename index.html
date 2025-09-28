@@ -3,57 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>Cockpit Cosmique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/medaillon.png">
-  <meta name="theme-color" content="#6a00ff">
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js");
-    }
-  </script>
 </head>
 <body>
-  <header>
-    <img src="assets/medaillon.png" alt="Médaillon cosmique" id="medaillon">
-    <h1>Cockpit Cosmique</h1>
-  </header>
+  <div id="cockpit">
+    <h1>🪐 Cockpit Cosmique</h1>
 
-  <main id="cockpit">
-    <section id="distance"><h2>Distance</h2></section>
-    <section id="coordonnees"><h2>Coordonnées Minecraft</h2></section>
-    <section id="altitude"><h2>Altitude</h2></section>
-    <section id="temps"><h2>Horloge</h2></section>
-    <section id="solaire"><h2>Soleil</h2><img src="assets/soleil.svg" class="icone"></section>
-    <section id="lunaire"><h2>Lune</h2><img src="assets/lune.svg" class="icone"></section>
-    <section id="vitesse"><h2>Vitesse</h2></section>
-    <section id="frequence"><h2>Fréquence</h2></section>
-    <section id="niveau"><h2>Niveau à bulle</h2></section>
-  </main>
+    <section id="grandeurs">
+      <div>Instantanée : <span id="vitesse-instantanee">0.0000</span> km/h</div>
+      <div>Moyenne : <span id="vitesse-moyenne">0.0000</span> km/h</div>
+      <div>Distance : <span id="distance">0.0000</span> m</div>
+      <div>Temps : <span id="temps">0.00</span> s</div>
+      <div>Vitesse max : <span id="vitesse-max">0.0000</span> km/h</div>
+      <div>% Lumière : <span id="pourcentage-lumiere">0</span>%</div>
+      <div>% Son : <span id="pourcentage-son">0</span>%</div>
+    </section>
 
-  <div id="boutons">
-    <button onclick="toggleVitesse()">⏻ Marche/Arrêt Vitesse</button>
-    <button onclick="toggleDistance()">⏻ Marche/Arrêt Distance</button>
-    <button onclick="resetVitesseMax()">↻ Réinitialiser Vitesse Max</button>
-    <button onclick="rejouerRituels()">⏪ Rejouer Rituels</button>
-    <button onclick="resetConsoleLog()">⛔ Effacer Console</button>
-    <button onclick="exporterJournal()">📥 Exporter Journal</button>
+    <section id="soleil-lune">
+      <h2>☀️🌙 Soleil & Lune</h2>
+      <div>Culmination soleil : <span id="culmination-soleil">--</span></div>
+      <div>Heure solaire vraie : <span id="heure-solaire-vraie">--</span></div>
+      <div>Heure solaire moyenne : <span id="heure-solaire-moyenne">--</span></div>
+      <div>Équation du temps : <span id="equation-temps">--</span></div>
+      <div>Lune phase : <span id="phase-lune">--</span>%</div>
+      <div>Lune magnitude : <span id="magnitude-lune">--</span></div>
+      <div>Lever lune : <span id="lever-lune">--</span></div>
+      <div>Coucher lune : <span id="coucher-lune">--</span></div>
+      <div>Culmination lune : <span id="culmination-lune">--</span></div>
+    </section>
+
+    <section id="horloge">
+      <h2>⏰ Horloge Minecraft</h2>
+      <div id="horloge-minecraft">00:00:00</div>
+    </section>
+
+    <section id="meteo">
+      <h2>🌡️ Météo</h2>
+      <div>Température : <span id="temperature">--</span> °C</div>
+      <div>Pression : <span id="pression">--</span> hPa</div>
+      <div>Humidité : <span id="humidite">--</span>%</div>
+      <div>Vent : <span id="vent">--</span> km/h</div>
+      <div>Nuages : <span id="nuages">--</span>%</div>
+      <div>Pluie : <span id="pluie">--</span> mm</div>
+      <div>Neige : <span id="neige">--</span> mm</div>
+      <div>Indice UV : <span id="uv">--</span></div>
+      <div>Qualité air : <span id="qualite-air">--</span></div>
+      <div>Point d’ébullition : <span id="ebullition">--</span> °C</div>
+    </section>
+
+    <section id="boussole">
+      <h2>🧭 Boussole</h2>
+      <div>Cap : <span id="cap">--</span>°</div>
+      <div>Vers lat : <span id="latitude">--</span></div>
+      <div>Vers lon : <span id="longitude">--</span></div>
+      <div>Cap vers destination : <span id="cap-destination">--</span>°</div>
+    </section>
+
+    <section id="capteurs">
+      <h2>📐 Capteurs</h2>
+      <div>Niveau à bulle : <span id="niveau-bulle">--</span>°</div>
+      <div>Lumière : <span id="lux">--</span> lux</div>
+      <div>Son : <span id="db">--</span> dB</div>
+    </section>
   </div>
 
-  <div id="halos">
-    <div id="halo_souffle" class="halo souffle"></div>
-    <div id="halo_clarte" class="halo clarte"></div>
-    <div id="halo_rituel" class="halo rituel"></div>
-  </div>
-
-  <section id="console">
-    <h2>Console</h2>
-    <div id="console-log">0 déclenchements rituels</div>
-  </section>
-
-  <script type="module" src="js/grandeursCosmiques.js"></script>
-  <script src="js/rituels.js"></script>
+  <script src="script.js"></script>
 </body>
-      </html>
-      
+  </html>
+  
