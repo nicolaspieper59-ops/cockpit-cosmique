@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Cockpit Cosmique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/medaillon.png">
@@ -14,11 +15,13 @@
   </script>
 </head>
 <body>
+  <!-- Médaillon central -->
   <header>
     <img src="assets/medaillon.png" alt="Médaillon cosmique" id="medaillon">
     <h1>Cockpit Cosmique</h1>
   </header>
 
+  <!-- Sections des grandeurs -->
   <main id="cockpit">
     <section id="distance"><h2>Distance</h2></section>
     <section id="coordonnees"><h2>Coordonnées Minecraft</h2></section>
@@ -31,6 +34,7 @@
     <section id="vitesse"><h2>Vitesse</h2></section>
   </main>
 
+  <!-- Boutons interactifs -->
   <div id="boutons">
     <button onclick="toggleVitesse()">⏻ Marche/Arrêt Vitesse</button>
     <button onclick="toggleDistance()">⏻ Marche/Arrêt Distance</button>
@@ -38,23 +42,21 @@
     <button onclick="rejouerRituels()">⏪ Rejouer Rituels</button>
   </div>
 
+  <!-- Halos -->
   <div id="halos">
     <div id="halo_souffle" class="halo souffle"></div>
     <div id="halo_clarte" class="halo clarte"></div>
     <div id="halo_rituel" class="halo rituel"></div>
   </div>
 
+  <!-- Console de debug -->
+  <section id="console">
+    <h2>Console</h2>
+    <div id="console-log">0 déclenchements rituels</div>
+  </section>
+
+  <!-- Scripts -->
   <script type="module" src="js/grandeursCosmiques.js"></script>
   <script src="js/rituels.js"></script>
-  <script type="module">
-  import { afficherGrandeursCosmiques } from "./js/grandeursCosmiques.js";
-
-  // Premier affichage
-  afficherGrandeursCosmiques();
-
-  // Mise à jour toutes les 5 secondes
-  setInterval(afficherGrandeursCosmiques, 5000);
-  </script>
-  
 </body>
 </html>
