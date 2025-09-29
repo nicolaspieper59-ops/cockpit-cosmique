@@ -1,27 +1,18 @@
 body {
-  background-color: #1a1a1a;
+  background-color: #0a0a1a;
   color: #d0f0ff;
-  font-family: 'Press Start 2P', monospace;
+  font-family: monospace;
   padding: 20px;
 }
-
-#cockpit {
-  max-width: 800px;
-  margin: auto;
-  border: 2px solid #00ffff;
-  padding: 20px;
-  background: linear-gradient(to bottom, #000000, #222244);
-  box-shadow: 0 0 20px #00ffff;
-}
-
-h1, h2 {
+h1 {
+  text-align: center;
   color: #00ffcc;
   text-shadow: 0 0 5px #00ffff;
 }
-
 section {
-  margin-bottom: 20px;
+  border: 1px solid #00ffff;
+  margin: 20px 0;
   padding: 10px;
-  border: 1px dashed #00ffff;
   background-color: #111122;
+  box-shadow: 0 0 10px #00ffff;
 }
