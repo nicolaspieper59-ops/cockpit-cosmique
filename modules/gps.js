@@ -4,21 +4,25 @@ function activerGPS() {
       position => {
         const lat = position.coords.latitude.toFixed(6);
         const lon = position.coords.longitude.toFixed(6);
+        const lat = position.coords.altitude.toFixed(6);
 
         // Affichage dans le DOM
         document.getElementById('latitude').textContent = lat;
         document.getElementById('longitude').textContent = lon;
+        document.getElementById('altitude').textContent = alt;
 
         // Stockage local pour usage hors ligne
         localStorage.setItem('latitude', lat);
         localStorage.setItem('longitude', lon);
+        localStorage.setItem('altitude', alt);
 
-        console.log(`📍 Position réelle : ${lat}, ${lon}`);
+        console.log(`📍 Position réelle : ${lat}, ${lon}, ${alt}`);
       },
       error => {
         console.warn('Erreur GPS :', error.message);
         document.getElementById('latitude').textContent = 'Erreur';
         document.getElementById('longitude').textContent = 'Erreur';
+        document.getElementById('altitude').textContent = 'Erreur';
       },
       {
         enableHighAccuracy: true,
