@@ -8,13 +8,10 @@
 </head>
 <body>
   <main id="cockpit-cosmique">
+    
     <section id="vitesse-section">
       <h2>⏱️ Temps & Vitesse</h2>
       <div>Temps : <span id="temps">0.00 s</span></div>
-      <div>Vitesse max : <span id="vitesse-max">0.0000 km/h</span></div>
-      <div>% Lumière : <span id="pourcentage-lumiere">0%</span></div>
-      <div>% Son : <span id="pourcentage-son">0%</span></div>
-      <div>Précision GPS : <span id="precision-gps">60%</span></div>
       <div>Vitesse instantanée : <span id="vitesse-instantanee">-- km/h</span></div>
       <div>Vitesse moyenne : <span id="vitesse-moyenne">-- km/h</span></div>
       <div>Vitesse max : <span id="vitesse-max">-- km/h</span></div>
@@ -23,7 +20,7 @@
       <div>% Son : <span id="pourcentage-son">--%</span></div>
       <div>Distance : <span id="distance-km">-- km</span> | <span id="distance-m">-- m</span> | <span id="distance-mm">-- mm</span></div>
       <div>Distance cosmique : <span id="distance-sl">-- s lumière</span> | <span id="distance-al">-- al</span></div>
-      
+      <div>Précision GPS : <span id="precision-gps">--%</span></div>
       <button onclick="toggleMarche()">Marche/Arrêt</button>
       <button onclick="reinitialiserVitesseMax()">Réinitialiser max</button>
     </section>
@@ -75,19 +72,24 @@
       <div>Lumière : <span id="lumiere">-- lux</span></div>
       <div>Son : <span id="son">-- dB</span></div>
       <div>Fréquence : <span id="frequence-son">-- Hz</span></div>
-      import { boucleCosmique, collecterCapteurs } from './js/medaillonUniversel.js';
-
-setInterval(() => {
-  collecterCapteurs().then(capteurs => {
-    boucleCosmique(capteurs);
-  });
-}, 1000);
-      
     </section>
+
   </main>
 
   <script type="module" src="./js/sw-register.js"></script>
-  <script type="module" src="./js/medaillonUniversel.js"></script>
+  <script type="module">
+    import { boucleCosmique, collecterCapteurs, toggleMarche, reinitialiserVitesseMax } from './js/medaillonUniversel.js';
+
+    window.toggleMarche = toggleMarche;
+    window.reinitialiserVitesseMax = reinitialiserVitesseMax;
+    window.allerVersDestination = () => console.log("🧭 Cap vers destination activé");
+
+    setInterval(() => {
+      collecterCapteurs().then(capteurs => {
+        boucleCosmique(capteurs);
+      });
+    }, 1000);
+  </script>
 </body>
-      </html>
-      
+  </html>
+                                    
