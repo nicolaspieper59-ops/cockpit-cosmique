@@ -2,52 +2,75 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cockpit Cosmique</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Médaillon Cosmique Universel</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🌌 Cockpit Cosmique</h1>
+  <main id="cockpit-cosmique">
+    <section id="vitesse-section">
+      <h2>⏱️ Temps & Vitesse</h2>
+      <div>Temps : <span id="temps">0.00 s</span></div>
+      <div>Vitesse max : <span id="vitesse-max">0.0000 km/h</span></div>
+      <div>% Lumière : <span id="pourcentage-lumiere">0%</span></div>
+      <div>% Son : <span id="pourcentage-son">0%</span></div>
+      <div>Précision GPS : <span id="precision-gps">60%</span></div>
+      <button onclick="toggleMarche()">Marche/Arrêt</button>
+      <button onclick="reinitialiserVitesseMax()">Réinitialiser max</button>
+    </section>
 
-  <section id="grandeurs">
-    <h2>🚀 Grandeurs Cosmiques</h2>
-    <div class="grandeur-row">
-      <div><strong>Vitesse :</strong> <span id="vitesse-instantanee">0.0000</span> km/h</div>
-      <div>
-        <button onclick="toggleMarche()">⏯️ Marche / Arrêt</button>
-        <button onclick="reinitialiserVitesseMax()">♻️ Réinitialiser max</button>
-      </div>
-    </div>
-    <div><strong>Vitesse moyenne :</strong> <span id="vitesse-moyenne">0.0000</span> km/h</div>
-    <div><strong>Vitesse max :</strong> <span id="vitesse-max">0.0000</span> km/h</div>
-    <div><strong>Distance :</strong> <span id="distance">0.0000</span> m</div>
-    <div><strong>Altitude :</strong> <span id="altitude">--</span> m</div>
-    <div><strong>Temps :</strong> <span id="temps">0.00</span> s</div>
-    <div><strong>Vitesse mm/s :</strong> <span id="vitesse-mm">0</span></div>
-    <div><strong>Distance km :</strong> <span id="distance-km">0</span></div>
-    <div><strong>Distance sec-lumière :</strong> <span id="distance-sec-lumiere">0</span></div>
-    <div><strong>Distance année-lumière :</strong> <span id="distance-annee-lumiere">0</span></div>
-    <div><strong>% lumière :</strong> <span id="pourcentage-lumiere">0</span>%</div>
-    <div><strong>% son :</strong> <span id="pourcentage-son">0</span>%</div>
-    <div><strong>Coordonnées Minecraft :</strong> <span id="coords-minecraft">X:0 Y:64 Z:0</span></div>
-    <div><strong>Champ magnétique :</strong> <span id="champ-magnetique">--</span> µT</div>
-    <div><strong>Compteur Hz :</strong> <span id="compteur-hz">--</span></div>
-    <div><strong>Latitude :</strong> <span id="latitude">--</span></div>
-    <div><strong>Longitude :</strong> <span id="longitude">--</span></div>
-  </section>
+    <section id="astronomie-section">
+      <h2>☀️🌙 Soleil & Lune</h2>
+      <div>Culmination soleil : <span id="culmination-soleil">--</span></div>
+      <div>Heure solaire vraie : <span id="heure-solaire-vraie">--</span></div>
+      <div>Heure solaire moyenne : <span id="heure-solaire-moyenne">--</span></div>
+      <div>Équation du temps : <span id="equation-temps">--</span></div>
+      <div>Lune phase : <span id="lune-phase">--%</span></div>
+      <div>Lune magnitude : <span id="lune-magnitude">--</span></div>
+      <div>Lever lune : <span id="lever-lune">--</span></div>
+      <div>Coucher lune : <span id="coucher-lune">--</span></div>
+      <div>Culmination lune : <span id="culmination-lune">--</span></div>
+    </section>
 
-  <section id="medaillon">
-    <h2>🔮 Médaillon céleste</h2>
-    <canvas id="medaillon-celeste" width="300" height="300"></canvas>
-    <div>Zénith = bord | 0° = centre | Horizon = demi-cercle</div>
-  </section>
+    <section id="horloge-section">
+      <h2>⏰ Horloge Minecraft</h2>
+      <div id="horloge-minecraft">00:00:00</div>
+    </section>
 
-  <section id="constellations">
-    <h2>✴️ Constellations</h2>
-    <div id="liste-constellations"></div>
-  </section>
+    <section id="meteo-section">
+      <h2>🌡️ Météo</h2>
+      <div>Température : <span id="temperature">-- °C</span></div>
+      <div>Pression : <span id="pression">-- hPa</span></div>
+      <div>Humidité : <span id="humidite">--%</span></div>
+      <div>Vent : <span id="vent">-- km/h</span></div>
+      <div>Nuages : <span id="nuages">--%</span></div>
+      <div>Pluie : <span id="pluie">-- mm</span></div>
+      <div>Neige : <span id="neige">-- mm</span></div>
+      <div>Indice UV : <span id="indice-uv">--</span></div>
+      <div>Qualité air : <span id="qualite-air">--</span></div>
+      <div>Point d’ébullition : <span id="point-ebullition">-- °C</span></div>
+    </section>
 
-  <script src="script.js"></script>
+    <section id="orientation-section">
+      <h2>🧭 Boussole</h2>
+      <div>Cap : <span id="cap">--°</span></div>
+      <div>Vers lat : <span id="latitude">43.6119</span></div>
+      <div>Vers lon : <span id="longitude">3.8777</span></div>
+      <div>Cap vers destination : <span id="cap-destination">--°</span></div>
+      <button onclick="allerVersDestination()">Aller</button>
+    </section>
+
+    <section id="capteurs-section">
+      <h2>📐 Capteurs</h2>
+      <div>Niveau à bulle : <span id="niveau-bulle">--°</span></div>
+      <div>Lumière : <span id="lumiere">-- lux</span></div>
+      <div>Son : <span id="son">-- dB</span></div>
+      <div>Fréquence : <span id="frequence-son">-- Hz</span></div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/sw-register.js"></script>
+  <script type="module" src="./js/medaillonUniversel.js"></script>
 </body>
       </html>
       
