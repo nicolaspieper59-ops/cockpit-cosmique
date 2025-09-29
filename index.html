@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Cockpit Cosmique</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <h1>🌌 Cockpit Cosmique</h1>
-  <div id="etat-connexion">🔄 Connexion...</div>
+<section id="grandeurs">
+  <h2>🚀 Grandeurs Cosmiques</h2>
 
-  <section id="grandeurs">
-    <h2>🚀 Grandeurs</h2>
-    <div>Vitesse : <span id="vitesse-instantanee">0</span> km/h</div>
-    <div>Distance : <span id="distance">0</span> m</div>
-    <div>Temps : <span id="temps">0</span> s</div>
-    <div>Latitude : <span id="latitude">--</span></div>
-    <div>Longitude : <span id="longitude">--</span></div>
-    <div>Cap : <span id="cap">--</span>°</div>
-    <div>% Lumière : <span id="pourcentage-lumiere">--</span>%</div>
-    <div>% Son : <span id="pourcentage-son">--</span>%</div>
-  </section>
+  <div class="grandeur-row">
+    <div>
+      <strong>Vitesse instantanée :</strong> <span id="vitesse-instantanee">0.0000</span> km/h
+    </div>
+    <div>
+      <button onclick="toggleMarche()">⏯️ Marche / Arrêt</button>
+      <button onclick="reinitialiserVitesseMax()">♻️ Réinitialiser max</button>
+    </div>
+  </div>
 
-  <section id="capteurs">
-    <h2>📐 Capteurs</h2>
-    <div>Lumière : <span id="lux">--</span> lux</div>
-    <div>Son : <span id="db">--</span> dB</div>
-    <div>Niveau : <span id="niveau-bulle">--</span>°</div>
-  </section>
+  <div><strong>Vitesse moyenne :</strong> <span id="vitesse-moyenne">0.0000</span> km/h</div>
+  <div><strong>Vitesse max :</strong> <span id="vitesse-max">0.0000</span> km/h</div>
+  <div><strong>Distance :</strong> <span id="distance">0.0000</span> m</div>
+  <div><strong>Temps écoulé :</strong> <span id="temps">0.00</span> s</div>
 
-  <section id="horloge">
-    <h2>⏰ Horloge Minecraft</h2>
-    <div id="horloge-minecraft">00:00:00</div>
-  </section>
+  <div><strong>Vitesse en mm/s :</strong> <span id="vitesse-mm">0</span></div>
+  <div><strong>Distance en km :</strong> <span id="distance-km">0</span></div>
+  <div><strong>Distance en secondes-lumière :</strong> <span id="distance-sec-lumiere">0</span></div>
+  <div><strong>Distance en années-lumière :</strong> <span id="distance-annee-lumiere">0</span></div>
+  <div><strong>Coordonnées Minecraft :</strong> <span id="coords-minecraft">X:0 Y:64 Z:0</span></div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <div><strong>% vitesse lumière :</strong> <span id="pourcentage-lumiere">0</span>%</div>
+  <div><strong>% vitesse son :</strong> <span id="pourcentage-son">0</span>%</div>
+</section>
