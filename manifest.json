@@ -3,17 +3,12 @@
   "short_name": "Cockpit",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#6a00ff",
+  "background_color": "#0a0a1a",
+  "theme_color": "#00ffcc",
   "icons": [
     {
-      "src": "assets/medaillon.png",
+      "src": "assets/icones/medaillon.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/medaillon.png",
-      "sizes": "512x512",
       "type": "image/png"
     }
   ]
