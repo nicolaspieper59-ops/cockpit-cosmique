@@ -2,98 +2,77 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Cockpit Cosmique</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Constellations Cosmiques</title>
+  <style>
+    body {
+      background-color: #0a0a1a;
+      color: #d0f0ff;
+      font-family: 'Press Start 2P', monospace;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffff;
+      text-align: center;
+    }
+    .constellation {
+      border: 1px dashed #00ffff;
+      background-color: #111122;
+      margin: 10px;
+      padding: 10px;
+      box-shadow: 0 0 5px #00ffff;
+      cursor: pointer;
+    }
+    .constellation:hover {
+      background-color: #222244;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+    .glyph {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    .block {
+      font-size: 12px;
+      color: #ffcc00;
+    }
+  </style>
 </head>
 <body>
-  <div id="cockpit">
-    <h1>🪐 Cockpit Cosmique</h1>
+  <h1>🔮 Constellations Cosmiques</h1>
+  <div id="liste-constellations"></div>
 
-    <section id="grandeurs">
-      <div>Instantanée : <span id="vitesse-instantanee">0.0000</span> km/h</div>
-      <div>Moyenne : <span id="vitesse-moyenne">0.0000</span> km/h</div>
-      <div>Distance : <span id="distance">0.0000</span> m</div>
-      <div>Temps : <span id="temps">0.00</span> s</div>
-      <div>Vitesse max : <span id="vitesse-max">0.0000</span> km/h</div>
-      <div>% Lumière : <span id="pourcentage-lumiere">0</span>%</div>
-      <div>% Son : <span id="pourcentage-son">0</span>%</div>
-    </section>
+  <script>
+    const constellations = [
+      { nom: "Orion", symbole: "✴️", azimut: 90, altitude: 20, block: "Glowstone" },
+      { nom: "Andromède", symbole: "✴️", azimut: 120, altitude: 10, block: "Amethyst" },
+      { nom: "Cassiopeia", symbole: "✴️", azimut: 60, altitude: 30, block: "Prismarine" },
+      { nom: "Lyra", symbole: "✴️", azimut: 180, altitude: 15, block: "Redstone" },
+      { nom: "Ursa Major", symbole: "✴️", azimut: 270, altitude: 25, block: "Ice" },
+      { nom: "Scorpius", symbole: "✴️", azimut: 210, altitude: 5, block: "Netherite" },
+      { nom: "Sagittarius", symbole: "✴️", azimut: 240, altitude: 10, block: "Quartz" },
+      { nom: "Cygnus", symbole: "✴️", azimut: 150, altitude: 35, block: "Lapis" },
+      { nom: "Draco", symbole: "✴️", azimut: 330, altitude: 40, block: "Obsidian" },
+      { nom: "Pegasus", symbole: "✴️", azimut: 135, altitude: 20, block: "Beacon" }
+      // … étends jusqu’à 88
+    ];
 
-    <section id="soleil-lune">
-      <h2>☀️🌙 Soleil & Lune</h2>
-      <div>Culmination soleil : <span id="culmination-soleil">--</span></div>
-      <div>Heure solaire vraie : <span id="heure-solaire-vraie">--</span></div>
-      <div>Heure solaire moyenne : <span id="heure-solaire-moyenne">--</span></div>
-      <div>Équation du temps : <span id="equation-temps">--</span></div>
-      <div>Lune phase : <span id="phase-lune">--</span>%</div>
-      <div>Lune magnitude : <span id="magnitude-lune">--</span></div>
-      <div>Lever lune : <span id="lever-lune">--</span></div>
-      <div>Coucher lune : <span id="coucher-lune">--</span></div>
-      <div>Culmination lune : <span id="culmination-lune">--</span></div>
-    </section>
+    const container = document.getElementById('liste-constellations');
 
-    <section id="horloge">
-      <h2>⏰ Horloge Minecraft</h2>
-      <div id="horloge-minecraft">00:00:00</div>
-    </section>
-
-    <section id="meteo">
-      <h2>🌡️ Météo</h2>
-      <div>Température : <span id="temperature">--</span> °C</div>
-      <div>Pression : <span id="pression">--</span> hPa</div>
-      <div>Humidité : <span id="humidite">--</span>%</div>
-      <div>Vent : <span id="vent">--</span> km/h</div>
-      <div>Nuages : <span id="nuages">--</span>%</div>
-      <div>Pluie : <span id="pluie">--</span> mm</div>
-      <div>Neige : <span id="neige">--</span> mm</div>
-      <div>Indice UV : <span id="uv">--</span></div>
-      <div>Qualité air : <span id="qualite-air">--</span></div>
-      <div>Point d’ébullition : <span id="ebullition">--</span> °C</div>
-    </section>
-
-    <section id="boussole">
-      <h2>🧭 Boussole</h2>
-      <div>Cap : <span id="cap">--</span>°</div>
-      <div>Vers lat : <span id="latitude">--</span></div>
-      <div>Vers lon : <span id="longitude">--</span></div>
-      <div>Cap vers destination : <span id="cap-destination">--</span>°</div>
-    </section>
-    <section id="controle">
-  <h2>🎛️ Contrôles</h2>
-  <button onclick="toggleMarche()">Marche / Arrêt</button>
-  <button onclick="reinitialiserVitesseMax()">Réinitialiser vitesse max</button>
-</section>
-
-<section id="conversion">
-  <h2>🧮 Conversions</h2>
-  <div>Vitesse : <span id="vitesse-mm">0</span> mm/s</div>
-  <div>Distance : <span id="distance-km">0</span> km</div>
-  <div>Distance : <span id="distance-sec-lumiere">0</span> s lumière</div>
-  <div>Distance : <span id="distance-annee-lumiere">0</span> a.l.</div>
-  <div>Coordonnées Minecraft : <span id="coords-minecraft">X:0 Y:0 Z:0</span></div>
-</section>
-
-<section id="compteurs">
-  <h2>🌀 Compteurs</h2>
-  <div>Fréquence cosmique : <span id="compteur-hz">--</span> Hz</div>
-  <div>Champ magnétique : <span id="champ-magnetique">--</span> µT</div>
-</section>
-
-<section id="medaillon">
-  <h2>🔮 Médaillon cosmique</h2>
-  <canvas id="medaillon-celeste" width="300" height="300"></canvas>
-  <div>Zénith : bord du disque | 0° : centre | Horizon : demi-cercle</div>
-</section>  
-
-    <section id="capteurs">
-      <h2>📐 Capteurs</h2>
-      <div>Niveau à bulle : <span id="niveau-bulle">--</span>°</div>
-      <div>Lumière : <span id="lux">--</span> lux</div>
-      <div>Son : <span id="db">--</span> dB</div>
-    </section>
-  </div>
-
-  <script src="script.js"></script>
+    constellations.forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'constellation';
+      div.innerHTML = `
+        <span class="glyph">${c.symbole}</span>
+        <strong>${c.nom}</strong><br>
+        Azimut : ${c.azimut}° | Altitude : ${c.altitude}°<br>
+        <span class="block">Bloc Minecraft : ${c.block}</span>
+      `;
+      div.onclick = () => {
+        alert(`✨ Rituel activé pour ${c.nom} (${c.block})`);
+        // Tu peux déclencher ici une pulsation, un son, ou une carte céleste
+      };
+      container.appendChild(div);
+    });
+  </script>
 </body>
-  </html>
-  
+</html>
