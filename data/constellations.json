@@ -1,0 +1,5 @@
+[
+  { "nom": "Orion", "symbole": "⛏️", "azimut": 120, "altitude": 45, "block": "obsidian" },
+  { "nom": "Cassiopeia", "symbole": "✨", "azimut": 60, "altitude": 30, "block": "glowstone" },
+  { "nom": "Andromeda", "symbole": "🌀", "azimut": 200, "altitude": 20, "block": "end_stone" }
+]
