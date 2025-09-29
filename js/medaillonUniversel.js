@@ -62,6 +62,53 @@ function styliser(id, valeur, unite = '', precision = 2) {
   if (el) el.textContent = `${valeur.toFixed ? valeur.toFixed(precision) : valeur} ${unite}`.trim();
 }
 
+function calculerVitesse(gps, timestamp) {
+  if (!positionPrecedente || !chronoDebut) return {
+    vitesse: 0, moyenne: 0, max: vitesseMax,
+    vitesse_mm_s: 0, vitesse_m_s: 0,
+    pourcentLumiere: 0, pourcentSon: 0,
+    distanceKm: 0, distanceM: 0, distanceMm: 0,
+    distanceAL: 0, distanceSL: 0
+  };
+
+  const dt = (timestamp - positionPrecedente.timestamp) / 1000;
+  const d = calculerDistance(gps, positionPrecedente); // en mètres
+  const vitesse_m_s = d / dt;
+  const vitesse_mm_s = vitesse_m_s * 1000;
+  const vitesse_km_h = vitesse_m_s * 3.6;
+
+  distanceTotale += d;
+  if (vitesse_km_h > vitesseMax) vitesseMax = vitesse_km_h;
+
+  const moyenne_m_s = distanceTotale / ((timestamp - chronoDebut) / 1000);
+  const moyenne_km_h = moyenne_m_s * 3.6;
+
+  const pourcentLumiere = vitesse_m_s / 299792458 * 100;
+  const pourcentSon = vitesse_m_s / 343 * 100;
+
+  const distanceKm = distanceTotale / 1000;
+  const distanceM = distanceTotale;
+  const distanceMm = distanceTotale * 1000;
+  const distanceAL = distanceTotale / 9.461e+15;
+  const distanceSL = distanceTotale / 299792458;
+
+  return {
+    vitesse: vitesse_km_h,
+    moyenne: moyenne_km_h,
+    max: vitesseMax,
+    vitesse_mm_s,
+    vitesse_m_s,
+    pourcentLumiere,
+    pourcentSon,
+    distanceKm,
+    distanceM,
+    distanceMm,
+    distanceAL,
+    distanceSL
+  };
+}
+
+
 export function boucleCosmique(capteurs) {
   const timestamp = Date.now();
   const gps = capteurs.gps || { latitude: 43.6119, longitude: 3.8777, precision: 60 };
