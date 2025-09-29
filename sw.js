@@ -1,13 +1,19 @@
-const CACHE_NAME = 'cockpit-v1';
-const urlsToCache = [
-  'index.html', 'style.css', 'script.js',
-  'manifest.json', 'data/constellations.json'
-];
-
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(urlsToCache)));
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('medaillon-cache').then(cache => {
+      return cache.addAll([
+        './',
+        './index.html',
+        './style.css',
+        './manifest.json',
+        './js/medaillonUniversel.js'
+      ]);
+    })
+  );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
+  );
 });
