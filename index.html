@@ -75,6 +75,14 @@
       <div>Lumière : <span id="lumiere">-- lux</span></div>
       <div>Son : <span id="son">-- dB</span></div>
       <div>Fréquence : <span id="frequence-son">-- Hz</span></div>
+      import { boucleCosmique, collecterCapteurs } from './js/medaillonUniversel.js';
+
+setInterval(() => {
+  collecterCapteurs().then(capteurs => {
+    boucleCosmique(capteurs);
+  });
+}, 1000);
+      
     </section>
   </main>
 
