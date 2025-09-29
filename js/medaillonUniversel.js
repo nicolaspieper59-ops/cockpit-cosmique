@@ -108,7 +108,6 @@ function calculerVitesse(gps, timestamp) {
   };
 }
 
-
 export function boucleCosmique(capteurs) {
   const timestamp = Date.now();
   const gps = capteurs.gps || { latitude: 43.6119, longitude: 3.8777, precision: 60 };
@@ -118,6 +117,44 @@ export function boucleCosmique(capteurs) {
   const lux = capteurs.lumiere || '--';
   const son = capteurs.son || '--';
   const hz = capteurs.frequence || '--';
+  export function collecterCapteurs() {
+  const gps = navigator.geolocation ? new Promise(resolve => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      resolve({
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude,
+        altitude: pos.coords.altitude || 0,
+        precision: pos.coords.accuracy || 60
+      });
+    });
+  }) : Promise.resolve({ latitude: 43.6119, longitude: 3.8777, altitude: 0, precision: 60 });
+
+  // Orientation via DeviceOrientationEvent
+  const orientation = window.orientationData || { cap: 0 };
+
+  // Autres capteurs à intégrer via Bluetooth / WebUSB / Web Serial
+  const capteurs = {
+    orientation,
+    niveau: '--',
+    lumiere: '--',
+    son: '--',
+    frequence: '--',
+    meteo: {
+      temperature: '--',
+      pression: '--',
+      humidite: '--',
+      vent: '--',
+      pluie: '--',
+      neige: '--',
+      uv: '--',
+      air: '--',
+      ebullition: '--'
+    }
+  };
+
+  return gps.then(gpsData => ({ gps: gpsData, ...capteurs }));
+  }
+  
 
   const vitesses = calculerVitesse(gps, timestamp);
   const horloge = calculerHorlogeMinecraft(new Date(timestamp));
