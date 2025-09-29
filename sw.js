@@ -1,37 +1,20 @@
-const CACHE_NAME = "cockpit-cache-v1";
-const ASSETS = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./js/grandeursCosmiques.js",
-  "./js/modulesCapteurs.js",
-  "./js/rituels.js",
-  "./data/config.json",
-  "./data/journal.json",
-  "./assets/soleil.svg",
-  "./assets/lune.svg",
-  "./assets/halo_souffle.svg",
-  "./assets/halo_clarte.svg",
-  "./assets/halo_rituel.svg",
-  "./assets/medaillon.png",
-  "./assets/souffle.mp3",
-  "./assets/clarte.mp3",
-  "./assets/rituel.mp3"
+const CACHE_NAME = 'cockpit-cache-v1';
+const urlsToCache = [
+  'index.html',
+  'style.css',
+  'script.js',
+  'manifest.json',
+  'data/constellations.json'
 ];
 
-self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
-});
-
-self.addEventListener("activate", event => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-self.addEventListener("fetch", event => {
-  event.respondWith(caches.match(event.request).then(resp => resp || fetch(event.request)));
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
+  );
 });
-                                 
