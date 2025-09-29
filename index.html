@@ -2,117 +2,38 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Grandeurs Cosmiques</title>
-  <style>
-    body {
-      background-color: #0a0a1a;
-      color: #d0f0ff;
-      font-family: 'Courier New', monospace;
-      padding: 20px;
-    }
-    h1 {
-      color: #00ffcc;
-      text-align: center;
-      text-shadow: 0 0 5px #00ffff;
-    }
-    section {
-      border: 1px solid #00ffff;
-      margin: 20px 0;
-      padding: 15px;
-      background-color: #111122;
-      box-shadow: 0 0 10px #00ffff;
-    }
-    .grandeur {
-      display: flex;
-      justify-content: space-between;
-      margin: 5px 0;
-    }
-    .label {
-      font-weight: bold;
-    }
-    button {
-      background-color: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 5px 10px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #ff00ff;
-      color: #fff;
-    }
-  </style>
+  <title>Cockpit Cosmique</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <h1>🌌 Grandeurs Cosmiques</h1>
+  <h1>🌌 Cockpit Cosmique</h1>
+  <div id="etat-connexion">🔄 Connexion...</div>
 
-  <section id="vitesse">
-    <h2>🚀 Vitesse & Distance</h2>
-    <div class="grandeur"><span class="label">Vitesse instantanée :</span> <span id="vitesse-instantanee">0.0000</span> km/h</div>
-    <div class="grandeur"><span class="label">Vitesse moyenne :</span> <span id="vitesse-moyenne">0.0000</span> km/h</div>
-    <div class="grandeur"><span class="label">Vitesse max :</span> <span id="vitesse-max">0.0000</span> km/h <button onclick="reinitialiserVitesseMax()">Réinitialiser</button></div>
-    <div class="grandeur"><span class="label">Distance :</span> <span id="distance">0.0000</span> m</div>
-    <div class="grandeur"><span class="label">Temps écoulé :</span> <span id="temps">0.00</span> s <button onclick="toggleMarche()">Marche / Arrêt</button></div>
-  </section>
-
-  <section id="conversion">
-    <h2>🧮 Conversions</h2>
-    <div class="grandeur"><span class="label">Vitesse en mm/s :</span> <span id="vitesse-mm">0</span></div>
-    <div class="grandeur"><span class="label">Distance en km :</span> <span id="distance-km">0</span></div>
-    <div class="grandeur"><span class="label">Distance en secondes-lumière :</span> <span id="distance-sec-lumiere">0</span></div>
-    <div class="grandeur"><span class="label">Distance en années-lumière :</span> <span id="distance-annee-lumiere">0</span></div>
-    <div class="grandeur"><span class="label">Coordonnées Minecraft :</span> <span id="coords-minecraft">X:0 Y:64 Z:0</span></div>
-  </section>
-
-  <section id="pourcentages">
-    <h2>⚡ Pourcentages</h2>
-    <div class="grandeur"><span class="label">% de la vitesse de la lumière :</span> <span id="pourcentage-lumiere">0</span>%</div>
-    <div class="grandeur"><span class="label">% de la vitesse du son :</span> <span id="pourcentage-son">0</span>%</div>
-  </section>
-
-  <section id="soleil-lune">
-    <h2>☀️🌙 Soleil & Lune</h2>
-    <div class="grandeur"><span class="label">Culmination Soleil :</span> <span id="culmination-soleil">--</span></div>
-    <div class="grandeur"><span class="label">Heure solaire vraie :</span> <span id="heure-solaire-vraie">--</span></div>
-    <div class="grandeur"><span class="label">Heure solaire moyenne :</span> <span id="heure-solaire-moyenne">--</span></div>
-    <div class="grandeur"><span class="label">Équation du temps :</span> <span id="equation-temps">--</span></div>
-    <div class="grandeur"><span class="label">Phase lunaire :</span> <span id="phase-lune">--</span>%</div>
-    <div class="grandeur"><span class="label">Magnitude lunaire :</span> <span id="magnitude-lune">--</span></div>
-    <div class="grandeur"><span class="label">Lever lune :</span> <span id="lever-lune">--</span></div>
-    <div class="grandeur"><span class="label">Coucher lune :</span> <span id="coucher-lune">--</span></div>
-    <div class="grandeur"><span class="label">Culmination lune :</span> <span id="culmination-lune">--</span></div>
-  </section>
-
-  <section id="horloge">
-    <h2>⏰ Horloge Minecraft</h2>
-    <div class="grandeur"><span class="label">Heure :</span> <span id="horloge-minecraft">00:00:00</span></div>
+  <section id="grandeurs">
+    <h2>🚀 Grandeurs</h2>
+    <div>Vitesse : <span id="vitesse-instantanee">0</span> km/h</div>
+    <div>Distance : <span id="distance">0</span> m</div>
+    <div>Temps : <span id="temps">0</span> s</div>
+    <div>Latitude : <span id="latitude">--</span></div>
+    <div>Longitude : <span id="longitude">--</span></div>
+    <div>Cap : <span id="cap">--</span>°</div>
+    <div>% Lumière : <span id="pourcentage-lumiere">--</span>%</div>
+    <div>% Son : <span id="pourcentage-son">--</span>%</div>
   </section>
 
   <section id="capteurs">
     <h2>📐 Capteurs</h2>
-    <div class="grandeur"><span class="label">Niveau à bulle :</span> <span id="niveau-bulle">--</span>°</div>
-    <div class="grandeur"><span class="label">Lumière :</span> <span id="lux">--</span> lux</div>
-    <div class="grandeur"><span class="label">Son :</span> <span id="db">--</span> dB</div>
+    <div>Lumière : <span id="lux">--</span> lux</div>
+    <div>Son : <span id="db">--</span> dB</div>
+    <div>Niveau : <span id="niveau-bulle">--</span>°</div>
   </section>
 
-  <section id="meteo">
-    <h2>🌡️ Météo</h2>
-    <div class="grandeur"><span class="label">Température :</span> <span id="temperature">--</span> °C</div>
-    <div class="grandeur"><span class="label">Pression :</span> <span id="pression">--</span> hPa</div>
-    <div class="grandeur"><span class="label">Humidité :</span> <span id="humidite">--</span>%</div>
-    <div class="grandeur"><span class="label">Vent :</span> <span id="vent">--</span> km/h</div>
-    <div class="grandeur"><span class="label">Nuages :</span> <span id="nuages">--</span>%</div>
-    <div class="grandeur"><span class="label">Pluie :</span> <span id="pluie">--</span> mm</div>
-    <div class="grandeur"><span class="label">Neige :</span> <span id="neige">--</span> mm</div>
-    <div class="grandeur"><span class="label">Indice UV :</span> <span id="uv">--</span></div>
-    <div class="grandeur"><span class="label">Qualité de l’air :</span> <span id="qualite-air">--</span></div>
-    <div class="grandeur"><span class="label">Point d’ébullition :</span> <span id="ebullition">--</span> °C</div>
+  <section id="horloge">
+    <h2>⏰ Horloge Minecraft</h2>
+    <div id="horloge-minecraft">00:00:00</div>
   </section>
 
-  <section id="boussole">
-    <h2>🧭 Boussole</h2>
-    <div class="grandeur"><span class="label">Cap :</span> <span id="cap">--</span>°</div>
-    <div class="grandeur"><span class="label">Latitude :</span> <span id="latitude">--</span></div>
-    <div class="grandeur"><span class="label">Longitude :</span> <span id="longitude">--</span></div>
-    <div class="grandeur"><span class="label">
+  <script src="script.js"></script>
+</body>
+</html>
